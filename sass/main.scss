@@ -1,0 +1,158 @@
+@import './colors';
+
+*,
+::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	height: 100vh;
+	background: $very-light-gray;
+	color: $very-dark-blue;
+	font-size: 1.6rem;
+	font-family: 'Poppins', sans-serif;
+}
+
+.intro-container {
+	max-width: 450px;
+	text-align: center;
+	margin-inline: auto;
+	padding-block: 3em 1em;
+	padding-inline: 1em;
+
+	.light {
+		font-weight: 400;
+	}
+
+	p {
+		margin-top: 1em;
+		font-weight: 200;
+		color: $grayish-blue;
+	}
+}
+
+.cards-container {
+	max-width: max-content;
+	margin: 2em auto;
+	padding: 0.5em 1.5em;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-areas: 'A' 'B' 'C' 'D';
+	gap: 1.5em;
+
+	.card {
+		max-width: 400px;
+		padding: 2em 2em;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		background-color: $white;
+		border-radius: 10px;
+		box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+		overflow: hidden;
+
+		&::before {
+			content: '';
+			width: 100%;
+			height: 5px;
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		p {
+			font-size: 1.5rem;
+			color: $grayish-blue;
+		}
+
+		h2 {
+			margin-bottom: 0.5em;
+		}
+
+		img {
+			margin-top: 1em;
+			align-self: flex-end;
+		}
+	}
+
+	.supervisor {
+		grid-area: A;
+		&::before {
+			background-color: $cyan;
+		}
+	}
+	.team {
+		grid-area: B;
+		&::before {
+			background-color: $red;
+		}
+	}
+	.karma {
+		grid-area: C;
+		&::before {
+			background-color: $orange;
+		}
+	}
+	.calc {
+		grid-area: D;
+		&::before {
+			background-color: $blue;
+		}
+	}
+}
+
+.attribution {
+	padding: 1em 1.5em;
+	text-align: center;
+	color: $grayish-blue;
+
+	a {
+		text-decoration: none;
+		color: $very-dark-blue;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.intro-container {
+		max-width: 600px;
+		font-size: 1.7rem;
+	}
+
+	.cards-container {
+		padding-inline: 1.8em;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-areas:
+			'A B'
+			'C D';
+		gap: 1.8em;
+	}
+}
+
+@media (min-width: 1200px) {
+	.intro-container {
+		font-size: 1.8rem;
+	}
+
+	.cards-container {
+		padding-inline: 2em;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-areas:
+			'. B .'
+			'A B D'
+			'A C D'
+			'. C .';
+		gap: 2em;
+	}
+}
